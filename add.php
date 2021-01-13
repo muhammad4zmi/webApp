@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Form Add Data</title>
 </head>
 
 <body>
@@ -48,42 +48,39 @@
                 <div class="card">
 
                     <div class="card-body">
-                        <h5 class="card-title">Data Mahasiswa</h5>
-                        <a href="add.php"><button type="button" class="btn btn-primary">Add Data</button></a>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">NIM</th>
-                                    <th scope="col">Nama</th>
-                                    <th scope="col">Alamat</th>
-                                    <th scope="col">No Hp</th>
-                                    <th scope="col">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                include "koneksi.php";
-                                $query = mysqli_query($connect, "SELECT * FROM mahasiswa");
-                                $no = 1;
-                                ?>
-                                <?php foreach ($query as $k) : ?>
-                                    <tr>
-                                        <td><?= $no++; ?></td>
-                                        <td><?= $k['nim']; ?></td>
-                                        <td><?= $k['nama']; ?></td>
-                                        <td><?= $k['alamat']; ?></td>
-                                        <td><?= $k['no_hp']; ?></td>
-                                        <td>
-                                            <a href="">Edit</a> | <a href="">Delete</a>
-                                        </td>
+                        <form action="add_data.php" method="post">
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">NIM</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="nim">
+                                </div>
+                            </div>
+                            <div class=" mb-3 row">
+                                <label class="col-sm-2 col-form-label">Nama</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="nama">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">Alamat</label>
+                                <div class="col-sm-10">
+                                    <textarea name="alamat" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label class="col-sm-2 col-form-label">No Hp</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="no_hp">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Add Data</button>
+                                </div>
+                            </div>
 
-                                    </tr>
+                        </form>
 
-                                <?php endforeach; ?>
-
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
@@ -96,7 +93,7 @@
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
