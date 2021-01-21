@@ -1,3 +1,9 @@
+<?php
+session_start();
+if ($_SESSION['status'] != "login") {
+    header("location:login.php");
+}
+?>
 <!doctype html>
 <html lang="en">
 
@@ -29,7 +35,7 @@
                         <a class="nav-link" href="#">Features</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="logout.php">Logout</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -49,6 +55,14 @@
 
                     <div class="card-body">
                         <h5 class="card-title">Data Mahasiswa</h5>
+
+                        <?php
+                        if (isset($_SESSION['alert'])) {
+                            echo $_SESSION['alert'];
+                        } else {
+                            unset($_SESSION['alert']);
+                        }
+                        ?>
                         <a href="add.php"><button type="button" class="btn btn-primary">Add Data</button></a>
                         <table class="table">
                             <thead>
@@ -75,7 +89,7 @@
                                         <td><?= $k['alamat']; ?></td>
                                         <td><?= $k['no_hp']; ?></td>
                                         <td>
-                                            <a href="">Edit</a> | <a href="">Delete</a>
+                                            <a href="update.php?nim=<?= $k['nim']; ?>">Edit</a> | <a href="delete.php?nim=<?= $k['nim']; ?>" onclick="return confirm('Yakin hapus data ini?')">Delete</a>
                                         </td>
 
                                     </tr>
